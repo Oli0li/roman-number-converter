@@ -34,11 +34,9 @@ class RomanToNum
     roman_letters.each_with_index do |letter, index|
       converted_letter = CONVERSION_TABLE[letter.to_sym]
       # Only when the letter is not the last one
-      # If there is a smaller letter before a bigger one, count the bigger one minus the smaller one
-      if index == roman_letters.size - 1
-        arabic_number += converted_letter
-      elsif converted_letter < CONVERSION_TABLE[roman_letters[index + 1].to_sym]
-        arabic_number -= converted_letter
+      unless index == roman_letters.size - 1
+        # If there is a smaller letter before a bigger one, count the bigger one minus the smaller one, else, count it as normal
+        converted_letter < CONVERSION_TABLE[roman_letters[index + 1].to_sym] ? arabic_number -= converted_letter : arabic_number += converted_letter
       else
         arabic_number += converted_letter
       end
