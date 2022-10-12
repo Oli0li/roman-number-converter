@@ -1,4 +1,4 @@
-class RomanToNum
+class RomanNumber
   CONVERSION_TABLE = {
     I: 1,
     V: 5,
